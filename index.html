@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="bower_components/d3/d3.js"></script>
+    <style>
+        /*.main-area {
+            width: 50%;
+            height: 50%;
+        }*/
+    </style>
+</head>
+<body>
+ <svg class="main-area"
+    viewBox="0 0 500 800 "
+    preserveAspectRatio="xMinYMin meet"></svg>
+</body>
+
+
+<script>
+    (function (sandbox) {
+        var main = sandbox.d3.select('.main-area');
+        var myText = {
+            title1: "Franziska Goralski",
+            title2: "YIEEEEPIEEE"
+        };
+
+        main.append("polyline")
+            .style("stroke", "black")
+            .style("fill", "none")
+            .attr("points", "100,50, 200,150, 300,50");
+
+        var isShown;
+        main.append("text")
+            .style("fill", "black")
+            .attr("x", 150)
+            .attr("y", 50)
+            .attr("text-anchor", "end")
+            .on("click", function(d, i) {
+                if (isShown) {
+                    isShown.remove();
+                    isShown = null;
+                } else {
+                    isShown = main.append("text")
+                    .style("fill", "black")
+                    .attr("x", 150)
+                    .attr("y", 50)
+                    .text(myText.title2);
+                }
+            })
+            .text(myText.title1);
+
+    }(this));
+
+</script>
+</html>
